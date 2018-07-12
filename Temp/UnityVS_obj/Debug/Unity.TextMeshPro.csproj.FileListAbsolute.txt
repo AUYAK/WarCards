@@ -1,0 +1,2 @@
+D:\Unity\WarCards\Temp\UnityVS_obj\Debug\Unity.TextMeshPro.csprojResolveAssemblyReference.cache
+D:\Unity\WarCards\Temp\UnityVS_obj\Debug\Unity.TextMeshPro.csproj.CoreCompileInputs.cache
