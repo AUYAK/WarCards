@@ -1,2 +1,0 @@
-D:\Unity\WarCards\Temp\UnityVS_obj\Debug\Unity.PackageManagerUI.Editor.csprojResolveAssemblyReference.cache
-D:\Unity\WarCards\Temp\UnityVS_obj\Debug\Unity.PackageManagerUI.Editor.csproj.CoreCompileInputs.cache

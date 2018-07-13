@@ -32,6 +32,10 @@ public class CardScr : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         Vector3 newPos = mainCamera.ScreenToWorldPoint(eventData.position);
         transform.position = newPos + offset;
+
+        if (tempCardGO.transform.parent != defaultTempCardParent)
+            tempCardGO.transform.SetParent(defaultTempCardParent);
+
         CheckCardPosititon();
     }
 
@@ -41,8 +45,12 @@ public class CardScr : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         transform.SetParent(currentParent);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        transform.SetSiblingIndex(tempCardGO.transform.GetSiblingIndex());
+
         tempCardGO.transform.SetParent(GameObject.Find("Canvas").transform);
         tempCardGO.transform.SetPositionAndRotation(new Vector3(2340, 0), new Quaternion());
+
+         
 
     }
     private void CheckCardPosititon()

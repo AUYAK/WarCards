@@ -1,4 +1,0 @@
-#Thu Jul 12 14:47:34 MSK 2018
-base.0=D\:\\Unity\\WarCards\\Temp\\gradleOut\\build\\intermediates\\transforms\\dex\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex
