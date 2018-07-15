@@ -225,7 +225,7 @@ Prefab:
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 661.94995
+      value: 1010.53894
       objectReference: {fileID: 0}
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
@@ -271,6 +271,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548109816458470, guid: db44bad03320d4a47ad5ce917b1b35ad,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114548109816458470, guid: db44bad03320d4a47ad5ce917b1b35ad,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114344040350715344, guid: db44bad03320d4a47ad5ce917b1b35ad, type: 2}
@@ -394,6 +404,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -408,6 +419,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f609e0f828e41ab4fb323234e7aaefb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -667,7 +689,7 @@ Prefab:
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1258.0499
+      value: 1606.6388
       objectReference: {fileID: 0}
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
@@ -1278,7 +1300,7 @@ Prefab:
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 860.64996
+      value: 1209.2389
       objectReference: {fileID: 0}
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
@@ -1428,7 +1450,7 @@ Prefab:
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1059.35
+      value: 1407.9388
       objectReference: {fileID: 0}
     - target: {fileID: 224533432490535938, guid: db44bad03320d4a47ad5ce917b1b35ad,
         type: 2}

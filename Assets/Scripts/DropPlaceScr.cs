@@ -5,14 +5,14 @@ public class DropPlaceScr : MonoBehaviour, IDropHandler,IPointerEnterHandler,IPo
 {
     public void OnDrop(PointerEventData eventData)
     {
-        CardScr card = eventData.pointerDrag.GetComponent<CardScr>();
+        CardMovementScr card = eventData.pointerDrag.GetComponent<CardMovementScr>();
         if (card) card.currentParent = transform;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
-        CardScr card = eventData.pointerDrag.GetComponent<CardScr>();
+        CardMovementScr card = eventData.pointerDrag.GetComponent<CardMovementScr>();
         if (card)
             card.defaultTempCardParent = transform;
     }
@@ -20,7 +20,7 @@ public class DropPlaceScr : MonoBehaviour, IDropHandler,IPointerEnterHandler,IPo
     public void OnPointerExit(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null) return;
-        CardScr card = eventData.pointerDrag.GetComponent<CardScr>();
+        CardMovementScr card = eventData.pointerDrag.GetComponent<CardMovementScr>();
         if (card && card.defaultTempCardParent==transform)
             card.defaultTempCardParent = transform;
     }
