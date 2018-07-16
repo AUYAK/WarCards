@@ -9,6 +9,12 @@ public class CardInfoScr : MonoBehaviour
     public Card SelfCard;
     public Image Logo;
     public TextMeshProUGUI Name;
+    public void HideCartInfo(Card card)
+    {
+        SelfCard = card;
+        card.Logo = null;
+        card.Name = "TOP SECRET";
+    }
 
     public void ShowInfoCard(Card card)
     {
