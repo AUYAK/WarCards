@@ -9,14 +9,14 @@ public class CardInfoScr : MonoBehaviour
     public Card SelfCard;
     public Image Logo;
     public TextMeshProUGUI Name;
-    public void HideCartInfo(Card card)
+    public void HideCardInfo(Card card)
     {
         SelfCard = card;
         card.Logo = null;
         card.Name = "TOP SECRET";
     }
 
-    public void ShowInfoCard(Card card)
+    public void ShowCardInfo(Card card)
     {
         SelfCard = card;
         Logo.sprite = card.Logo;
@@ -26,6 +26,6 @@ public class CardInfoScr : MonoBehaviour
 
     private void Start()
     {
-        ShowInfoCard(CardManager.AllCards[transform.GetSiblingIndex()]);
+        //ShowCardInfo(CardManager.AllCards[transform.GetSiblingIndex()]);
     }
 }

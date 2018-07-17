@@ -304,6 +304,7 @@
     <Compile Include="Assets\Scripts\CardManagerScr.cs" />
     <Compile Include="Assets\Scripts\CardMovementScr.cs" />
     <Compile Include="Assets\Scripts\DropPlaceScr.cs" />
+    <Compile Include="Assets\Scripts\GameManagerScr.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
