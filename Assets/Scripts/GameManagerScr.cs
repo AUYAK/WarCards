@@ -38,12 +38,19 @@ public class GameManagerScr : MonoBehaviour {
     int turn, turnTime = 30;
     public TextMeshProUGUI turnTimeTxt;
     public Button EndTurnButton;
-
+    public bool IsPlayerTurn
+    {
+        get { return turn % 2 == 0; }
+    }
     void Start()
     {
+        turn = 0;
+        
         currentGame = new Game();
         GiveHandCards(currentGame.EnemyDeck, enemyHand);
         GiveHandCards(currentGame.PlayerDeck, playerHand);
+
+        StartCoroutine(TurnFunc());
     }
     void GiveHandCards(List<Card> deck, Transform hand)
     {
@@ -64,5 +71,45 @@ public class GameManagerScr : MonoBehaviour {
         deck.RemoveAt(0);
     }
 
+    public void ChangeTurn()
+    {
+        StopAllCoroutines() ;
+        turn++;
 
+        EndTurnButton.interactable = IsPlayerTurn;
+        if (IsPlayerTurn)
+        {
+            GiveNewCards();
+        }
+        StartCoroutine(TurnFunc());
+    }
+
+    private void GiveNewCards()
+    {
+        GiveCardToHand(currentGame.EnemyDeck, enemyHand);
+        GiveCardToHand(currentGame.PlayerDeck, playerHand);
+    }
+    IEnumerator TurnFunc()
+    {
+        turnTime = 30;
+        turnTimeTxt.SetText(turnTime.ToString()) ;
+
+        if (IsPlayerTurn)
+        {
+            while (turnTime-- > 0)
+            {
+                turnTimeTxt.text = turnTime.ToString();
+                yield return new WaitForSeconds(1);
+            }
+        }
+        else
+        {
+            while (turnTime-- > 27)
+            {
+                turnTimeTxt.text = turnTime.ToString();
+                yield return new WaitForSeconds(1);
+            }
+        }
+        ChangeTurn();
+    }
 }

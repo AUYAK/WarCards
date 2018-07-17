@@ -9,12 +9,14 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Vector3 offset;
     public Transform currentParent, defaultTempCardParent;
     GameObject tempCardGO;
+    GameManagerScr GameManager;
     bool IsDraggable;
 
     public void Awake()
     {
         mainCamera = Camera.allCameras[0];
         tempCardGO = GameObject.Find("TempCardGO");
+        GameManager = FindObjectOfType<GameManagerScr>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -22,7 +24,7 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         offset = transform.position - mainCamera.ScreenToWorldPoint(eventData.position);
         currentParent = defaultTempCardParent = transform.parent;
-        IsDraggable = currentParent.GetComponent<DropPlaceScr>().Type == FIELD_TYPE.SELF_HAND;
+        IsDraggable = currentParent.GetComponent<DropPlaceScr>().Type == FIELD_TYPE.SELF_HAND && GameManager.IsPlayerTurn;
         if (!IsDraggable) return;
         tempCardGO.transform.SetParent(currentParent);
         tempCardGO.transform.SetSiblingIndex(transform.GetSiblingIndex());

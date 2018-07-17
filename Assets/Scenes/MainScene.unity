@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1103.1, y: 58.7}
+  m_AnchoredPosition: {x: 877, y: 58.7}
   m_SizeDelta: {x: 168.1, y: 74.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197429184
@@ -836,7 +836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1100.5, y: -2.19}
+  m_AnchoredPosition: {x: 874.4, y: -2.19}
   m_SizeDelta: {x: 162.95, y: 47.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721010983
@@ -877,7 +877,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721010984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420033}
+        m_MethodName: ChangeTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &721010984
