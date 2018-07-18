@@ -9,7 +9,7 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Vector3 offset;
     public Transform currentParent, defaultTempCardParent;
     GameObject tempCardGO;
-    GameManagerScr GameManager;
+    public GameManagerScr GameManager;
     bool IsDraggable;
 
     public void Awake()

@@ -8,20 +8,23 @@ public class CardInfoScr : MonoBehaviour
 {
     public Card SelfCard;
     public Image Logo;
-    public TextMeshProUGUI Name;
+    public TextMeshProUGUI Name,Attack,Defense;
+    public GameObject HideObj;
     public void HideCardInfo(Card card)
     {
         SelfCard = card;
-        card.Logo = null;
-        card.Name = "TOP SECRET";
+        HideObj.SetActive(true);
     }
 
     public void ShowCardInfo(Card card)
     {
         SelfCard = card;
+        HideObj.SetActive(false);
         Logo.sprite = card.Logo;
         Logo.preserveAspect = true;
         Name.text = card.Name;
+        Attack.text = card.Attack.ToString();
+        Defense.text = card.Defense.ToString();
     }
 
     private void Start()

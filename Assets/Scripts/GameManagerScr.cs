@@ -6,24 +6,19 @@ using TMPro;
 
 public class Game
 {
-    public List<Card> EnemyDeck, PlayerDeck,
-               EnemyHand, PlayerHand,
-               EnemyField, PlayerField;
-    public Game() {
+    public List<Card> EnemyDeck, PlayerDeck;
+
+    public Game()
+    {
         EnemyDeck = GiveDeckCart();
         PlayerDeck = GiveDeckCart();
 
-        EnemyHand = new List<Card>();
-        EnemyField = new List<Card>();
-
-        PlayerHand = new List<Card>();
-        PlayerField = new List<Card>();
     }
 
     List<Card> GiveDeckCart()
     {
         List<Card> list = new List<Card>();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 30; i++)
             list.Add(CardManager.AllCards[Random.Range(0, CardManager.AllCards.Count)]);
         return list;
 
@@ -31,13 +26,19 @@ public class Game
 
 }
 
-public class GameManagerScr : MonoBehaviour {
+public class GameManagerScr : MonoBehaviour
+{
     public Game currentGame;
-    public Transform enemyHand, playerHand;
+    public Transform enemyHand, playerHand, enemyField, playerField;
     public GameObject CardPref;
     int turn, turnTime = 30;
     public TextMeshProUGUI turnTimeTxt;
     public Button EndTurnButton;
+    public List<CardInfoScr> PlayerHandCards = new List<CardInfoScr>(),
+                             PlayerFieldCards = new List<CardInfoScr>(),
+                             EnemyHandCards = new List<CardInfoScr>(),
+                             EnemyFieldCards = new List<CardInfoScr>();
+
     public bool IsPlayerTurn
     {
         get { return turn % 2 == 0; }
@@ -45,7 +46,7 @@ public class GameManagerScr : MonoBehaviour {
     void Start()
     {
         turn = 0;
-        
+
         currentGame = new Game();
         GiveHandCards(currentGame.EnemyDeck, enemyHand);
         GiveHandCards(currentGame.PlayerDeck, playerHand);
@@ -55,10 +56,10 @@ public class GameManagerScr : MonoBehaviour {
     void GiveHandCards(List<Card> deck, Transform hand)
     {
         int i = 0;
-        while (i++ < 4) GiveCardToHand(deck,hand);
+        while (i++ < 4) GiveCardToHand(deck, hand);
     }
 
-    void GiveCardToHand(List<Card> deck,Transform hand)
+    void GiveCardToHand(List<Card> deck, Transform hand)
     {
         if (deck.Count == 0) return;
 
@@ -66,14 +67,21 @@ public class GameManagerScr : MonoBehaviour {
 
         GameObject cardGO = Instantiate(CardPref, hand, false);
         if (hand == enemyHand)
+        {
             cardGO.GetComponent<CardInfoScr>().HideCardInfo(card);
-        else cardGO.GetComponent<CardInfoScr>().ShowCardInfo(card);
+            EnemyHandCards.Add(cardGO.GetComponent<CardInfoScr>());
+        }
+        else
+        {
+            cardGO.GetComponent<CardInfoScr>().ShowCardInfo(card);
+            PlayerHandCards.Add(cardGO.GetComponent<CardInfoScr>());
+        }
         deck.RemoveAt(0);
     }
 
     public void ChangeTurn()
     {
-        StopAllCoroutines() ;
+        StopAllCoroutines();
         turn++;
 
         EndTurnButton.interactable = IsPlayerTurn;
@@ -92,7 +100,7 @@ public class GameManagerScr : MonoBehaviour {
     IEnumerator TurnFunc()
     {
         turnTime = 30;
-        turnTimeTxt.SetText(turnTime.ToString()) ;
+        turnTimeTxt.SetText(turnTime.ToString());
 
         if (IsPlayerTurn)
         {
@@ -109,7 +117,30 @@ public class GameManagerScr : MonoBehaviour {
                 turnTimeTxt.text = turnTime.ToString();
                 yield return new WaitForSeconds(1);
             }
+            if (EnemyHandCards.Count > 0)
+            {
+                EnemyTurn(EnemyHandCards);
+            }
         }
         ChangeTurn();
+    }
+
+    private void EnemyTurn(List<CardInfoScr> cards)
+    {
+
+        int count = Random.Range(0, cards.Count - 1);
+        for (int i = 0; i < count; i++)
+        {
+            if (EnemyFieldCards.Count > 5) return;
+            else
+            {
+                CardInfoScr currentCard = cards[0];
+                currentCard.ShowCardInfo(cards[0].SelfCard);
+                currentCard.transform.SetParent(enemyField);
+                EnemyHandCards.Remove(currentCard);
+                EnemyFieldCards.Add(currentCard);
+            }
+        }
+
     }
 }

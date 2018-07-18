@@ -16,7 +16,12 @@ public class DropPlaceScr : MonoBehaviour, IDropHandler,IPointerEnterHandler,IPo
     {
         if (Type != FIELD_TYPE.SELF_FIELD) return;
             CardMovementScr card = eventData.pointerDrag.GetComponent<CardMovementScr>();
-        if (card) card.currentParent = transform;
+        if (card && card.GameManager.PlayerFieldCards.Count<6)
+        {
+            card.GameManager.PlayerHandCards.Remove(card.GetComponent<CardInfoScr>());
+            card.GameManager.PlayerFieldCards.Add(card.GetComponent<CardInfoScr>());
+            card.currentParent = transform;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
