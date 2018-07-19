@@ -24,7 +24,9 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         offset = transform.position - mainCamera.ScreenToWorldPoint(eventData.position);
         currentParent = defaultTempCardParent = transform.parent;
-        IsDraggable = currentParent.GetComponent<DropPlaceScr>().Type == FIELD_TYPE.SELF_HAND && GameManager.IsPlayerTurn;
+        IsDraggable = (currentParent.GetComponent<DropPlaceScr>().Type == FIELD_TYPE.SELF_HAND ||
+                       currentParent.GetComponent<DropPlaceScr>().Type == FIELD_TYPE.SELF_FIELD &&
+                       GameManager.IsPlayerTurn);
         if (!IsDraggable) return;
         tempCardGO.transform.SetParent(currentParent);
         tempCardGO.transform.SetSiblingIndex(transform.GetSiblingIndex());
@@ -41,8 +43,10 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (tempCardGO.transform.parent != defaultTempCardParent)
             tempCardGO.transform.SetParent(defaultTempCardParent);
-
-        CheckCardPosititon();
+        if (currentParent.GetComponent<DropPlaceScr>().Type != FIELD_TYPE.SELF_FIELD)
+        {
+            CheckCardPosititon();
+        }
     }
 
 
@@ -57,7 +61,7 @@ public class CardMovementScr : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         tempCardGO.transform.SetParent(GameObject.Find("Canvas").transform);
         tempCardGO.transform.SetPositionAndRotation(new Vector3(2340, 0), new Quaternion());
 
-         
+
 
     }
     private void CheckCardPosititon()

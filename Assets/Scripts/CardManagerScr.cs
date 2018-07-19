@@ -7,6 +7,12 @@ public struct Card
     public string Name;
     public Sprite Logo;
     public int Attack, Defense;
+    public bool CanAttack;
+
+    public bool IsAlive
+    {
+        get { return Defense > 0; }
+    }
 
     public Card(string name, string logoPath, int atack, int defense)
     {
@@ -14,6 +20,15 @@ public struct Card
         Logo = Resources.Load<Sprite>(logoPath);
         Attack = atack;
         Defense = defense;
+        CanAttack = false;
+    }
+    public void ChangeAttackState(bool can)
+    {
+        CanAttack = can;
+    }
+    public void GetDamage(int damage)
+    {
+        Defense = Defense - damage;
     }
 
 }
